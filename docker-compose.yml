@@ -1,0 +1,17 @@
+version: '3'
+ 
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: grupo006
+      POSTGRES_PASSWORD: changethis!
+      POSTGRES_DB: site_ong
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

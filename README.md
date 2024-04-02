@@ -26,6 +26,12 @@ poetry install
 
 4 - Rode o projeto:
 
+Primeiro suba o banco de dados com:
+```
+docker compose run
+```
+E depois inicie a aplicação:
+
 ```
 poetry run task run
 ```
