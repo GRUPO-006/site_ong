@@ -6,7 +6,7 @@ from site_ong.templates_conf import templates
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="site_ong/static"), name="static")
+app.mount('/static', StaticFiles(directory='site_ong/static'), name='static')
 
 
 @app.get('/', response_class=HTMLResponse)
