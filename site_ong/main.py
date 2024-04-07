@@ -12,3 +12,13 @@ app.mount('/static', StaticFiles(directory='site_ong/static'), name='static')
 @app.get('/', response_class=HTMLResponse)
 def read_root(request: Request):
     return templates.TemplateResponse(name='index.html', request=request)
+
+
+@app.get('/contato', response_class=HTMLResponse)
+def contato(request: Request):
+    return templates.TemplateResponse(name='contato.html', request=request)
+
+
+@app.get('/blog', response_class=HTMLResponse)
+def blog(request: Request):
+    return templates.TemplateResponse(name='blog.html', request=request)
