@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
 
     hashed_password = get_password_hash('admin')
     db_user = User(
-        full_name='admin',
+        full_name='Admin',
         username='admin',
         password=hashed_password,
         role='admin',
