@@ -4,5 +4,11 @@
 
 {% block content %}
     <h1>Dashboard</h1>
-    <p>Welcome to the dashboard, {{ user.full_name }}!</p>
+    <p>Olá, {{ user.full_name }}!</p>
+    <button onclick="window.location.href='/usuarios/novo'">Novo Usuário</button>
+    <button onclick="window.location.href='/usuarios/deletar'">Deletar Usuário</button>
+    <!-- check if user.role is equal to 'admin' -->
+    {% if user.role == 'admin' %}
+        <button onclick="window.location.href='/usuarios'">Listar Usuários</button>
+    {% endif %}
 {% endblock %}
