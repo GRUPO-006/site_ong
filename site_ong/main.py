@@ -9,9 +9,11 @@ from sqlalchemy.orm import sessionmaker
 from site_ong.auth.routes import router as auth_router
 from site_ong.dashboard.routes import router as dashboard_router
 from site_ong.database import engine
+from site_ong.posts.routes import router as posts_router
 from site_ong.security import get_password_hash
 from site_ong.templates_conf import templates
 from site_ong.users.models import User
+from site_ong.users.routes import router as users_router
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -42,6 +44,8 @@ app.mount('/static', StaticFiles(directory='site_ong/static'), name='static')
 
 app.include_router(auth_router)
 app.include_router(dashboard_router)
+app.include_router(posts_router)
+app.include_router(users_router)
 
 
 @app.get('/', response_class=HTMLResponse)

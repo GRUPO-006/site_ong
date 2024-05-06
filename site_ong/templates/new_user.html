@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Novo Usuário</h1>
+<form action="/usuarios/novo" method="POST">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="username">Nome de usuário:</label>
+    <input type="username" id="username" name="username" required>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Cadastrar</button>
+</form>
+{% endblock %}
