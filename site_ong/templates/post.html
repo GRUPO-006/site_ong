@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<article>
+  <h1>{{ post.title }}</h1>
+  <h2>{{ post.subhead }}</h2>
+  <p>Escrito por: {{ post.posted_by }}</p>
+  <p>Data da postagem: {{ post.date_posted }}</p>
+  <div>
+    {{ post.content|safe }}
+  </div>
+</article>
+  
+{% endblock %}

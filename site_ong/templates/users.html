@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Usuários{% endblock %}
 {% block content %}
+<main class="user-listing">
     <h1>Usuários</h1>
     <table>
         <tr>
@@ -9,11 +10,12 @@
             <th>Função</th>
         </tr>
         {% for user in users %}
-            <tr>
-                <td>{{ user.full_name }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.role }}</td>
-            </tr>
+        <tr>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.role }}</td>
+        </tr>
         {% endfor %}
     </table>
+</main>
 {% endblock %}

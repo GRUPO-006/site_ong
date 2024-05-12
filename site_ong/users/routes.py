@@ -25,7 +25,10 @@ def users(request: Request, user: CurrentUser, session: Session):
         raise HTTPException(status_code=403, detail='Permissão negada')
 
     users = session.query(User).all()
-    return templates.TemplateResponse('users.html', {'request': request, 'users': users})
+    return templates.TemplateResponse(
+        'users.html', {'request': request, 'users': users}
+    )
+
 
 @router.get('/novo', response_class=HTMLResponse)
 def users(request: Request, user: CurrentUser):

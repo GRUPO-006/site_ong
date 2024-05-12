@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
@@ -58,6 +58,11 @@ def contato(request: Request):
     return templates.TemplateResponse(name='contato.html', request=request)
 
 
-@app.get('/blog', response_class=HTMLResponse)
-def blog(request: Request):
-    return templates.TemplateResponse(name='blog.html', request=request)
+# route triggered by logout button (delete session cookie)
+# then redirect to index page
+@app.get('/logout', response_class=HTMLResponse)
+def logout(request: Request):
+    # redirect to index page with redirect response
+    response = RedirectResponse(url='/')
+    response.delete_cookie('session')
+    return response
