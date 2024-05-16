@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
-
-{% block title %}Deletar Usuário{% endblock %}
-
 {% block content %}
-    <h1>Deletar Usuário</h1>
-    <form action="/usuarios/deletar" method="POST">
-        <label for="username">Nome de usuário:</label>
-        <input type="username" id="username" name="username" required>
-        <button type="submit">Deletar</button>
-    </form>
+<h1>Deletar Usuário</h1>
+<form action="/usuarios/deletar" method="POST">
+    <label for="username">Nome de usuário:</label>
+    <input type="username" id="username" name="username" required />
+    <button type="submit">Deletar</button>
+</form>
 {% endblock %}
