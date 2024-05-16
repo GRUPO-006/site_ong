@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    <main>
-        <section class="contact">
-            <h2>Formulário de Contato</h2>
-            <form action="/contato" method="POST">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </main>
+<main>
+    <section class="contact">
+        <div class="contact-container">
+            <h2>Contato</h2>
+            <p>Estamos sempre procurando parceiros interessados em colaborar conosco ou pessoas dispostas a fazer doações. Entre em contato conosco para saber mais.</p>
+            <ul>
+                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/ong.tecnologiasolidaria/" target="_blank">ong.tecnologiasolidaria</a></li>
+                <li><strong>Email:</strong> <a href="mailto:ongtecnologiasolidaria@gmail.com">ongtecnologiasolidaria@gmail.com</a></li>
+            </ul>
+        </div>
+    </section>
+</main>
 {% endblock %}
