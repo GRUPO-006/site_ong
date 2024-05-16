@@ -58,11 +58,8 @@ def contato(request: Request):
     return templates.TemplateResponse(name='contato.html', request=request)
 
 
-# route triggered by logout button (delete session cookie)
-# then redirect to index page
 @app.get('/logout', response_class=HTMLResponse)
 def logout(request: Request):
-    # redirect to index page with redirect response
-    response = RedirectResponse(url='/')
-    response.delete_cookie('session')
+    response = RedirectResponse(url='/', status_code=303)
+    response.delete_cookie('access_token')
     return response

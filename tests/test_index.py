@@ -11,6 +11,6 @@ def test_contato_success(client):
 
 
 def test_blog_success(client):
-    response = client.get('/blog')
+    response = client.get('/posts')
 
     assert response.status_code == 200

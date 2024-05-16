@@ -1,14 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-    <main>
-        <section class="banner">
-            <h1>Tecnologia Solidária</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <img src="https://source.unsplash.com/random" alt="Random Image">
-        </section>
-        <section class="about">
-            <h2>Sobre Nós</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc at cursus pellentesque, nisl eros pellentesque quam, a faucibus nisl nunc id nisl. Nulla facilisi. Donec id elit non mi aliquet sagittis. Sed posuere, nunc et porta euismod, nisi diam porttitor mauris, a sollicitudin nisi justo in libero. Vestibulum mollis mauris enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc at cursus pellentesque, nisl eros pellentesque quam, a faucibus nisl nunc id nisl. Nulla facilisi. Donec id elit non mi aliquet sagittis. Sed posuere, nunc et porta euismod, nisi diam porttitor mauris, a sollicitudin nisi justo in libero. Vestibulum mollis mauris enim.</p>
-        </section>
-    </main>
+<main>
+    <section class="banner">
+        <h1>Tecnologia Solidária</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <img src="{{ url_for('static', path='img/logo.jpg') }}" alt="Logo do Tecnologia Solidária">
+    </section>
+    <section class="about">
+        <h2>Sobre Nós</h2>
+        <p>ONG sem fins lucrativos Instituição criada em 2023 com a causa Social e Ambiental de ajudar na preservação do meio ambiente, retirando de circulação equipamentos já obsoletos e em desuso, os chamados “Lixo Eletrônico”, Computadores, Notebooks, Celulares e demais acessórios de Tecnologia e Informática. Realizando a triagem completa destes equipamentos e dando a destinação ecologicamente correta. Quando possível a restauração e reaproveitamento destes equipamentos e destinando o lixo eletrônico para o descarte ecologicamente correto.</p>
+        <p>Os equipamentos reparados serão destinados a entidades, instituições e população carente.</p>
+    </section>
+    <section class="achievements">
+        <h2>Conquistas:</h2>
+        <p>ONG recém inaugurada buscando fazer a diferença no ramo da tecnologia com o aprimoramento e crescimento Social e institucional. Com grande orgulho contamos com uma empresa parceira com sede no bairro Vila Sônia no Morumbi, estamos em busca de mais parcerias e amigos do bem.</p>
+    </section>
+    <section class="collaborators">
+        <h2>Colaboradores</h2>
+        <br>
+        <div class="collaborator">
+            <h3>Alexandre Alves Luscri</h3>
+            <p>Co-Fundador - TI</p>
+        </div>
+        <div class="collaborator">
+            <h3>Aline Alves do Nascimento</h3>
+            <p>Tesoureira</p>
+        </div>
+        <div class="collaborator">
+            <h3>Thiago Henrique Albanez</h3>
+            <p>Presidente</p>
+        </div>
+        <div class="collaborator">
+            <h3>José Paulo Albanez</h3>
+            <p>Administrador</p>
+        </div>
+    </section>
+</main>
 {% endblock %}

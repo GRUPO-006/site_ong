@@ -31,7 +31,7 @@ def users(request: Request, user: CurrentUser, session: Session):
 
 
 @router.get('/novo', response_class=HTMLResponse)
-def users(request: Request, user: CurrentUser):
+def new_user_page(request: Request, user: CurrentUser):
     if not user:
         return RedirectResponse('/login')
     return templates.TemplateResponse('new_user.html', {'request': request})
@@ -46,13 +46,13 @@ async def new_user(request: Request, user: CurrentUser, session: Session):
     full_name = form.get('name')
     username = form.get('username')
     password = form.get('password')
-    # role = form.get('role')
+    role = form.get('role')
 
     db_user = User(
         full_name=full_name,
         username=username,
         password=get_password_hash(password),
-        role='writer',
+        role=role,
     )
     session.add(db_user)
     session.commit()
