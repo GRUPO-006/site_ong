@@ -8,12 +8,14 @@
             <th>Nome</th>
             <th>Nome de usuário</th>
             <th>Função</th>
+            <th></th>
         </tr>
         {% for user in users %}
         <tr>
             <td>{{ user.full_name }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.role }}</td>
+            <td><a href="/usuarios/editar/{{ user.id }}">Editar</a></td>
         </tr>
         {% endfor %}
     </table>
