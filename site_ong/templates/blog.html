@@ -1,46 +1,18 @@
 {% extends 'base.html'%}
 {% block content %} 
-<section
-  class="cards"
->
-  <a href="#">
-    <div class="card">
-      <h3>Exemplo 1</h3>
-      <h4>Subtítulo 1</h4>
-      <p>
-        Escrito por Ivan em 04/04/2024
-      </p>
-    </div>
-  </a>
 
-  <a href="#">
-    <div class="card">
-      <h3>Exemplo 1</h3>
-      <h4>Subtítulo 1</h4>
-      <p>
-        Escrito por Ivan em 04/04/2024
-      </p>
-    </div>
-  </a>
-
-  <a href="#">
-    <div class="card">
-      <h3>Exemplo 1</h3>
-      <h4>Subtítulo 1</h4>
-      <p>
-        Escrito por Ivan em 04/04/2024
-      </p>
-    </div>
-  </a>
-
-  <a href="#">
-    <div class="card">
-      <h3>Exemplo 1</h3>
-      <h4>Subtítulo 1</h4>
-      <p>
-        Escrito por Ivan em 04/04/2024
-      </p>
-    </div>
-  </a>
-</section>
+{% for post in posts %}
+  <section class="cards">
+      <!-- opens a a tag with url_for to /posts/{post.id} -->
+  <a href="{{ url_for('post', post_id=post.id) }}">
+      <div class="card">
+        <h3>{{ post.title }}</h3>
+        <h4>{{ post.subhead }}</h4>
+        <p>
+          Escrito por {{ post.posted_by }} em {{ post.date_posted }}
+        </p>
+      </div>
+    </a>
+  </section>
+{% endfor %}
 {% endblock %}

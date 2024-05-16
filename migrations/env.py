@@ -6,6 +6,7 @@ from sqlalchemy import engine_from_config, pool
 from site_ong.database import Base
 from site_ong.settings import Settings
 from site_ong.users.models import User
+from site_ong.posts.models import Post
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
@@ -58,6 +58,8 @@ def contato(request: Request):
     return templates.TemplateResponse(name='contato.html', request=request)
 
 
-@app.get('/blog', response_class=HTMLResponse)
-def blog(request: Request):
-    return templates.TemplateResponse(name='blog.html', request=request)
+@app.get('/logout', response_class=HTMLResponse)
+def logout(request: Request):
+    response = RedirectResponse(url='/', status_code=303)
+    response.delete_cookie('access_token')
+    return response

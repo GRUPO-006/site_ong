@@ -3,12 +3,20 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+<section class="dashboard"
     <h1>Dashboard</h1>
     <p>Olá, {{ user.full_name }}!</p>
+
+    {% if user.role == 'admin' %}
     <button onclick="window.location.href='/usuarios/novo'">Novo Usuário</button>
     <button onclick="window.location.href='/usuarios/deletar'">Deletar Usuário</button>
-    <!-- check if user.role is equal to 'admin' -->
-    {% if user.role == 'admin' %}
-        <button onclick="window.location.href='/usuarios'">Listar Usuários</button>
+    <button onclick="window.location.href='/usuarios'">Listar Usuários</button>
+    <button onclick="window.location.href='/posts/admin'">Postagens</button>
     {% endif %}
+
+    <button onclick="window.location.href='/posts/novo'">Nova Postagem</button>
+    <!-- logout button -->
+    <button onclick="window.location.href='/logout'">Sair</button>
+</section>
+
 {% endblock %}
