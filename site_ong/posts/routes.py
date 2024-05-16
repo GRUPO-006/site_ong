@@ -95,7 +95,7 @@ def delete_post(post_id: int, session: Session, user: CurrentUser):
 def edit_post_page(
     post_id: int, request: Request, user: CurrentUser, session: Session
 ):
-    if not user:
+    if not user or user.role != 'admin':
         return RedirectResponse('/login')
     post = session.query(Post).get(post_id)
     return templates.TemplateResponse(
@@ -107,7 +107,7 @@ def edit_post_page(
 async def edit_post(
     post_id: int, request: Request, user: CurrentUser, session: Session
 ):
-    if not user:
+    if not user or user.role != 'admin':
         return RedirectResponse('/login')
 
     form = await request.form()

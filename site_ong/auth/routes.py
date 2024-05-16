@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import APIRouter, Depends, Response
 from fastapi.requests import Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy import select
@@ -31,24 +31,26 @@ def login_page(request: Request, user: CurrentUser):
 
 @router.post('/')
 async def login(request: Request, session: Session, response: Response):
-    form = await request.form()
-    username = form.get('username')
-    password = form.get('password')
-    user = session.scalar(select(User).where(User.username == username))
-    if not user:
-        raise HTTPException(
-            status_code=400, detail='Invalid username or password'
+    try:
+        form = await request.form()
+        username = form.get('username')
+        password = form.get('password')
+        user = session.scalar(select(User).where(User.username == username))
+        if not user:
+            raise ValueError('Nome de usuário ou senha inválidos.')
+
+        if not verify_password(password, user.password):
+            raise ValueError('Nome de usuário ou senha inválidos.')
+
+        token = create_access_token({'sub': username})
+        redirect_response = RedirectResponse('/dashboard', status_code=303)
+        redirect_response.set_cookie(
+            key='access_token', value=token, httponly=True, samesite='lax'
         )
 
-    if not verify_password(password, user.password):
-        raise HTTPException(
-            status_code=400, detail='Invalid username or password'
+        return redirect_response
+    except ValueError as e:
+        error_message = str(e)
+        return templates.TemplateResponse(
+            'login.html', {'request': request, 'error': error_message}
         )
-
-    token = create_access_token({'sub': username})
-    redirect_response = RedirectResponse('/dashboard', status_code=303)
-    redirect_response.set_cookie(
-        key='access_token', value=token, httponly=True, samesite='lax'
-    )
-
-    return redirect_response

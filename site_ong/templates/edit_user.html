@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="new-user">
+    <h1>Editar Usuário {{ user.username }}</h1>
+    <form action="/usuarios/editar/{{ user.id }}" method="POST">
+        <label for="name">Novo nome completo:</label>
+        <input type="text" id="name" name="name" value="{{ user.full_name }}" required>
+        <label for="password"> Nova Senha (deixe em branco para manter a mesma senha):</label>
+        <input type="password" id="password" name="password">
+        <label for="role">Função:</label>
+        <select id="role" name="role">
+            <option value="admin">Administrador</option>
+            <option value="writer">Escritor</option>
+        </select>
+        <br>
+        <button type="submit">Atualizar</button>
+    </form>
+    {{ error }}
+</main>
+{% endblock %}

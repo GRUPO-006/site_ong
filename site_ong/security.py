@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from fastapi import Depends, HTTPException, Request, status
+from fastapi import Depends, Request, status
+from fastapi.responses import RedirectResponse
 from jwt import DecodeError, ExpiredSignatureError, decode, encode
 from passlib.context import CryptContext
 from sqlalchemy import select
@@ -44,10 +45,8 @@ async def get_current_user(
 ):
     token = request.cookies.get('access_token')
 
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail='Could not validate credentials',
-        headers={'WWW-Authenticate': 'Bearer'},
+    redirect_response = RedirectResponse(
+        '/login', status_code=status.HTTP_303_SEE_OTHER
     )
 
     try:
@@ -66,6 +65,6 @@ async def get_current_user(
     )
 
     if user is None:
-        raise credentials_exception
+        return redirect_response
 
     return user
