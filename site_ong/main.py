@@ -1,17 +1,11 @@
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-
 from site_ong.auth.routes import router as auth_router
 from site_ong.dashboard.routes import router as dashboard_router
-
 from site_ong.posts.routes import router as posts_router
-
 from site_ong.templates_conf import templates
-
 from site_ong.users.routes import router as users_router
 
 app = FastAPI()

@@ -1,7 +1,7 @@
-from typer import Typer
-
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
+from typer import Typer
+
 from site_ong.database import engine
 from site_ong.security import get_password_hash
 from site_ong.users.models import User
@@ -10,9 +10,10 @@ app = Typer()
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
 @app.command()
 def create():
-    '''Create admin/admin user'''
+    """Create admin/admin user"""
     session = SessionLocal()
     db_user = session.scalar(select(User).where(User.username == 'admin'))
     if db_user:
