@@ -4,14 +4,24 @@ services:
   db:
     image: postgres
     restart: always
-    environment:
-      POSTGRES_USER: grupo006
-      POSTGRES_PASSWORD: changethis!
-      POSTGRES_DB: site_ong
+    env_file:
+      - .env
     ports:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
 
+  site_ong_app:
+    image: site_ong_app
+    entrypoint: ./entrypoint.sh
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
 volumes:
   db-data:
